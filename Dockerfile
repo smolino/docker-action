@@ -60,7 +60,7 @@ ENV _CONTAINERS_USERNS_CONFIGURED=""
 
 COPY /script.sh /home/podman/
 RUN chmod +x /home/podman/script.sh && chgrp podman /home/podman/script.sh
-RUN ln -s /usr/bin/podman /usr/bin/docker
+RUN ln -s /usr/bin/buildah /usr/bin/docker
 RUN chown podman:podman -R /home/podman/
 USER podman
 RUN mkdir /home/podman/.docker/
