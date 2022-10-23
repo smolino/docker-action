@@ -58,14 +58,14 @@ RUN mkdir -p /var/lib/shared/overlay-images \
 
 ENV _CONTAINERS_USERNS_CONFIGURED=""
 
-#COPY /script.sh /home/podman/
-#RUN chmod +x /home/podman/script.sh && chgrp podman /home/podman/script.sh
+COPY /script.sh /home/podman/
+RUN chmod +x /home/podman/script.sh && chgrp podman /home/podman/script.sh
 RUN ln -s /usr/bin/podman /usr/bin/docker
 RUN chown podman:podman -R /home/podman/
 USER podman
 RUN mkdir /home/podman/.docker/
 RUN echo -e "unqualified-search-registries = ['docker.io']" > /home/podman/.config/containers/registries.conf
-#RUN mkdir $HOME/.docker/
+RUN mkdir $HOME/.docker/
 COPY entrypoint.sh /entrypoint.sh
 RUN echo -e '$REGISTRY_AUTH' > $HOME/.docker/config.json
 WORKDIR /home/podman
