@@ -59,7 +59,7 @@ RUN mkdir -p /var/lib/shared/overlay-images \
 ENV _CONTAINERS_USERNS_CONFIGURED=""
 
 #COPY /script.sh /home/podman/
-RUN chmod +x /home/podman/script.sh && chgrp podman /home/podman/script.sh
+#RUN chmod +x /home/podman/script.sh && chgrp podman /home/podman/script.sh
 RUN ln -s /usr/bin/podman /usr/bin/docker
 RUN chown podman:podman -R /home/podman/
 USER podman
