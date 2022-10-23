@@ -1,0 +1,4 @@
+name: Dind action
+  # You may pin to the exact commit or the version.
+  # uses: ouzi-dev/dind-action@bfb4b89a76422d66124047abe882be6e0726b069
+  uses: ouzi-dev/dind-action@v1.0.1
