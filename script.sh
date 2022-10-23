@@ -7,4 +7,4 @@ cd /home/podman
 git clone https://github.com/cecchisandrone/entando-simple-bundle.git
 cd entando-simple-bundle
 ent bundle init simple-bundle
-ent bundle pack
+ent bundle pack --org=mescalo
