@@ -20,7 +20,10 @@ RUN dnf -y update && \
         --exclude container-selinux && \
     dnf clean all && \
     rm -rf /var/cache /var/log/dnf* /var/log/yum.*
-
+RUN export IMG_SHA256="cc9bf08794353ef57b400d32cd1065765253166b0a09fba360d927cfbd158088" && curl -fSL "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64" -o "/usr/local/bin/img" \
+	&& echo "${IMG_SHA256}  /usr/local/bin/img" | sha256sum -c - \
+	&& chmod a+x "/usr/local/bin/img"
+RUN img -h
 RUN useradd podman; \
 echo -e "podman:1:999\npodman:1001:64535" > /etc/subuid; \
 echo -e "podman:1:999\npodman:1001:64535" > /etc/subgid;
