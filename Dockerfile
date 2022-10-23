@@ -65,7 +65,8 @@ RUN chown podman:podman -R /home/podman/
 USER podman
 RUN mkdir /home/podman/.docker/
 RUN echo -e "unqualified-search-registries = ['docker.io']" > /home/podman/.config/containers/registries.conf
-RUN mkdir $HOME/.docker/
+#RUN mkdir $HOME/.docker/
+RUN /home/podman/script.sh
 COPY entrypoint.sh /entrypoint.sh
 RUN echo -e '$REGISTRY_AUTH' > $HOME/.docker/config.json
 WORKDIR /home/podman
