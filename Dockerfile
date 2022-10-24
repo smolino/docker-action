@@ -61,9 +61,11 @@ RUN mkdir -p /var/lib/shared/overlay-images \
 
 ENV _CONTAINERS_USERNS_CONFIGURED=""
 
+RUN export IMG_SHA256="cc9bf08794353ef57b400d32cd1065765253166b0a09fba360d927cfbd158088" && curl -fSL "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64" -o "/usr/local/bin/img" && echo "${IMG_SHA256}  /usr/local/bin/img" | sha256sum -c - && chmod a+x "/usr/local/bin/img"
+
 COPY /script.sh /home/podman/
 RUN chmod +x /home/podman/script.sh && chgrp podman /home/podman/script.sh
-RUN ln -s /usr/bin/buildah /usr/bin/docker
+RUN ln -s /usr/local/bin/img /usr/bin/docker
 RUN chown podman:podman -R /home/podman/
 USER podman
 RUN mkdir /home/podman/.docker/
